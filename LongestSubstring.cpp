@@ -6,5 +6,14 @@ For example, the longest substring without repeating letters for "abcabcbb" is "
 For "bbbbb" the longest substring is "b", with the length of 1.
 */
 
+/**
+ * Solution:
+ * 1. hash table: 
+ * 2. two pointer
+ * 
+ * 
+ */ 
+
 int lengthOfLongestSubstring(string s) {
+    
 }
