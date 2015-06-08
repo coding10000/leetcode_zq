@@ -72,8 +72,15 @@ bool validPalindrome(string s) {
  //time: O(n^2)
  //space: O(n^2)
  // why ????
- /*
-         vector<vector<string> > res[size];
+    vector<vector<string>> partition_2(string s) {
+        int size = s.size();
+        vector<vector<bool> > dp(size, vector<bool>(size));
+        for (int i = size - 1; i >= 0; --i) {
+            for (int j = i; j < size; ++j) {
+                dp[i][j]=(s[i]==s[j])&&(j<i+2||dp[i+1][j-1]);
+            }
+        }
+        vector<vector<string> > res[size];
         for (int i = size - 1; i >= 0; --i) {
             for (int j = i; j < size; ++j) {
                 if (dp[i][j] == false) continue;
@@ -89,32 +96,4 @@ bool validPalindrome(string s) {
             }
         }
         return res[0];
- */
-vector<vector<string> > partition_2(string s) {
-    if (s.empty()) {
-        return vector<vector<string> >();
     }
-    int n = s.size();
-    vector<vector<bool> > isPalindrome(n, vector<bool>(n, false));
-    for (int i = 0; i < n; ++i) {
-        for (int j = i; j >= 0; --j) {
-            isPalinrome[j][i] = (s[i] == s[j]) && (i - j < 2 && isPalinrome[j + 1][i - 1]);
-        }
-    }
-    vector<vector<string> > res[n];
-    for (int i = n - 1; i >= 0; --i) {
-        for (int j = i; j < n; ++j) {
-            if (isPalinrome[i][j] == false) continue;
-            string sub = s.substr(i, j - i + 1);
-            if (j == n - 1) {
-                res[i].push_back(vector<string>({word}));
-            } else {
-                for (auto iter : res[j + 1]) {
-                    iter.insert(iter.begin(), word);
-                    res[i].push_back(iter);
-                }
-            }
-        }
-    }
-    return res[0];
-}
