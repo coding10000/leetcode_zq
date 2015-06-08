@@ -21,16 +21,24 @@ public:
     bool isPalindrome(int x) {
         if (x < 0) return false;
         int d = 1;
-        while (d * 10 <= x) {
+        while (d <= x / 10) {
             d = d * 10;
         }
         while (x) {
-            int start = x / d;
-            int end = x % 10;
-            if (start != end) return false;
+            if (x / d != x % 10) {
+                return false;
+            }
             x = (x % d) / 10;
-            d = d / 10;
+            d = d / 100;
         }
         return true;
     }
 };
+
+/** 
+ * bug
+ * line 32:  d = d / 100; every time. d should be divided by 100, not 10
+ * line 24: if we can use /, then don't use *, because it can be overflow
+ *          while (d * 10 <= x) // TLE
+ *          while (d <= x / 10) // right
+ */
