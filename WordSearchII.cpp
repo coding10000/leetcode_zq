@@ -30,7 +30,7 @@ If you would like to learn how to implement a basic trie, please work on this pr
 
 /*
 Solution:
-1. backtracking, dfs
+1. backtracking, dfs : TLE
 2. 
 */
 
