@@ -38,4 +38,26 @@ string addBinary(string a, string b) {
     return res;
 }
 
+// 加操作也可以换成插入 res.insert(res.begin(), '0' + r % 2)
+string addBinary_2(string a, string b) {
+    int i = a.size() - 1;
+    int j = b.size() - 1;
+    string res;
+    int r = 0;
+    while (i >= 0 || j >= 0) {
+        if (i >= 0) {
+            r += a[i] - '0';
+            --i;
+        } 
+        if (j >= 0) {
+            r += b[j] - '0';
+            --j;
+        }
+        res.insert(res.begin(), '0' + r % 2);
+        r = r / 2;
+    }
+    if (r % 2) res.insert(res.begin(), '0' + r % 2);
+    return res;        
+}
+
 
