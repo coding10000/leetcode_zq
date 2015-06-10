@@ -42,4 +42,27 @@ string addBinary(string a, string b) {
     return res.substr(start);
 }
 
+// more concise
+  string addBinary(string a, string b) {
+      int i = a.size() - 1;
+      int j = b.size() - 1;
+      string res;
+      int r = 0;
+      while (i >= 0 || j >= 0) {
+          if (i >= 0) {
+              r += a[i] - '0';
+              --i;
+          } 
+          if (j >= 0) {
+              r += b[j] - '0';
+              --j;
+          }
+          res = static_cast<char>('0' + r % 2) + res;
+          r = r / 2;
+      }
+      if (r % 2) res = static_cast<char>('0' + r % 2) + res;
+      if (res[0] == '0') return "0";
+      return res;
+  }
+
 
