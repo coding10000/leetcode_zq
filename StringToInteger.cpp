@@ -26,5 +26,21 @@ If the correct value is out of the range of representable values, INT_MAX (21474
 */
 
 int myAtoi(string str) {
-bbb
+    int start = 0;
+    while (start < str.size() && str[start] == ' ') ++start;
+    if (start == str.size()) return 0;
+    int sign = 1;
+    if (str[start] == '+' || str[start] == '-') {
+        if (str[start] == '-') sign = -1;
+        ++start;
+    }
+    long long res = 0;
+    for (int i = start; i < str.size(); ++i) {
+        // bug: if (!isdigit(str[i])) return res; (没有乘以符号)
+        if (!isdigit(str[i])) break;
+        res = res * 10 + str[i] - '0';
+        if (res * sign >= INT_MAX) return INT_MAX;
+        if (res * sign <= INT_MIN) return INT_MIN;
+    }
+    return res * sign;
 }
