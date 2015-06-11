@@ -26,5 +26,5 @@ If the correct value is out of the range of representable values, INT_MAX (21474
 */
 
 int myAtoi(string str) {
-
+bbb
 }
