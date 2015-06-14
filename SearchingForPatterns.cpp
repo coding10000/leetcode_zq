@@ -43,5 +43,5 @@ pat[] = "AAAAB"
 Number of comparisons in worst case is O(m*(n-m+1)). 
 */
 
-// KMP
+// KMP （可以参考:http://blog.csdn.net/v_july_v/article/details/7041827, great and clear!!!）
 // Time complexity of KMP algorithm is O(n) in worst case.
