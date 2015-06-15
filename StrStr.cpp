@@ -29,3 +29,7 @@ please click the reload button  to reset your code definition.
     }
     return -1;
  }
+ 
+ int strStrKMP(string haystack, string needle) {
+  
+ }
